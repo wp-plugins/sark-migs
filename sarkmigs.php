@@ -33,9 +33,9 @@ function sark_migs_init() {
 			$this -> description      		= $this -> settings['description'];				
 			$this -> merchant_id      		= $this -> settings['merchant_id'];
 			$this -> access_code      		= $this -> settings['access_code'];
-			$this -> secure_hash_secret     = $this -> settings['secure_hash_secret'];
-	
-			$this -> service_host  = 'https://migs.mastercard.com.au/vpcpay';
+			$this -> secure_hash_secret     = $this -> settings['secure_hash_secret'];	
+			$this -> service_host  			= $this -> settings['service_host'];
+			
 			$this->callback = str_replace( 'https:', 'http:', home_url( '/wc-api/SarkMigs' )  );
 	
 			$this -> msg['message'] = "";
@@ -97,6 +97,14 @@ function sark_migs_init() {
 					'desc_tip'    => true,
 					'placeholder' => __( 'Secure Hash Secret', 'woocommerce' ),
 					'description' =>  __('Encrypted/Secure Hash Secret key Given to Merchant by MIGS', 'sark')
+				),
+				'service_host' => array(
+					'title' => __('MIGS URL', 'sark'),
+					'type' => 'text',
+					'desc_tip'    => true,
+					'placeholder' => __( 'MIGS URL', 'woocommerce' ),
+					'description' =>  __('(For example: https://migs.mastercard.com.au/vpcpay) Given to Merchant by MIGS', 'sark'),
+					'default' => __('https://migs.mastercard.com.au/vpcpay', 'sark')
 				)
 		
 			);
@@ -183,7 +191,7 @@ function sark_migs_init() {
 					$msg['message'] = "Thank you for shopping with us. However, the transaction has been declined.";
 				
 					$order -> update_status('failed');
-					$order -> add_order_note('Failed');
+					$order -> add_order_note('Payment Transaction ');
 					$order -> add_order_note($this->msg['message']);
 				}
 			} else {
@@ -191,7 +199,7 @@ function sark_migs_init() {
 				$msg['message'] = "Thank you for shopping with us. However, the transaction has been declined.";
 				
 				$order -> update_status('failed');
-				$order -> add_order_note('Failed');
+				$order -> add_order_note('Payment Transaction Failed');
 				$order -> add_order_note($this->msg['message']);
 			}
 		
@@ -211,13 +219,18 @@ function sark_migs_init() {
 			exit;		
 		}
 		
-		public function generate_axis_gate_form($order_id) {
+		public function generate_axis_gate_form($order_id) {			
 			global $woocommerce;
 			$order = new WC_Order($order_id);
 			$order_id = $order_id.'_'.date("ymds");
 			$order_amount = 100 * intval( $order->order_total );
 			
 			$md5Hash = $this->secure_hash_secret;
+			
+			/* Make sure user entered MIGS url, otherwise use the default one */
+			if( trim( $this->service_host ) == "" || $this->service_host == null ) {
+				$this->service_host = "https://migs.mastercard.com.au/vpcpay";
+			}
 			$service_host = $this->service_host."?";
 			
 			$DigitalOrder = array(
