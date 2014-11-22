@@ -2,7 +2,7 @@
 /*
 Plugin Name: Sark Migs
 Description: Extends WooCommerce with MasterCard Internet Gateway Service (MIGS).
-Version: 1.0
+Version: 1.1
 Author: Saravana Kumar K
 Author URI: http://iamsark.com
 Copyright: © 2014-2015 sarkware
