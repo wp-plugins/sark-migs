@@ -11,6 +11,7 @@ Extends WooCommerce with MasterCard Internet Gateway Service (MIGS)
 
 == Description ==
 This plugin enables MIGS payment gateway support for your WooCommerce sites. It Allows you to use MasterCard Internet Gateway Service or any other bank that uses MIGS ( like HSBC, Bendigo Bank, Axis Bank ... ) with the WooCommerce plugin. 
+
 It uses the redirect method, the user is redirected to MIGS payment gateway page so that you don't have to install an SSL certificate on your site.
 
 == Installation ==
