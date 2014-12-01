@@ -1,6 +1,6 @@
 === Sark Migs ===
 Contributors: mycholan
-Tags: WooCommerce, Payment Gateway, MasterCard Internet Gateway Service, MIGS, Axis Bank, MIGS Payment Gateway Integration with WooCommerce
+Tags: Visa Mastercard Plugin, Payment Gateway, MasterCard Internet Gateway Service, MIGS, Axis Bank, MIGS Payment Gateway Integration with WooCommerce
 Requires at least: 3.5.1
 Tested up to: 4.0
 Stable tag: 1.1
