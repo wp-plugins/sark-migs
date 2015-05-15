@@ -3,10 +3,10 @@
 Plugin Name: Sark Migs
 Plugin URI: http://sarkware.com/sark-migs-a-wordpress-plugin-for-adding-migs-payment-gateway-support-for-woocommerce/
 Description: Extends WooCommerce with MasterCard Internet Gateway Service (MIGS).
-Version: 1.1
+Version: 1.2
 Author: Saravana Kumar K
 Author URI: http://iamsark.com
-Copyright: © 2014-2015 sarkware
+Copyright: © Sarkware
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -224,7 +224,7 @@ function sark_migs_init() {
 			global $woocommerce;
 			$order = new WC_Order($order_id);
 			$order_id = $order_id.'_'.date("ymds");
-			$order_amount = 100 * intval( $order->order_total );
+			$order_amount = 100 * $order->order_total;
 			
 			$md5Hash = $this->secure_hash_secret;
 			

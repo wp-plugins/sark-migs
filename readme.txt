@@ -2,8 +2,8 @@
 Contributors: mycholan
 Tags: Visa Mastercard Plugin, Payment Gateway, MasterCard Internet Gateway Service, MIGS, Axis Bank, MIGS Payment Gateway Integration with WooCommerce
 Requires at least: 3.5.1
-Tested up to: 4.2.1
-Stable tag: 1.1
+Tested up to: 4.2.2
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,3 +37,6 @@ It uses the redirect method, the user is redirected to MIGS payment gateway page
 
 = 1.1 =
 * Some minor optimization work done.
+
+= 1.2 =
+* Order total rounding error fixed.
